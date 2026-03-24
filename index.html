@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GN - Nuclear Detective</title>
+    <link rel="icon" href="https://k.top4top.io/p_3722vt1l31.jpg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="day">
+
+    <div id="splash">
+        <img src="https://c.top4top.io/p_3721xm8yg1.jpg" alt="Logo">
+    </div>
+
+    <div id="app">
+        <div class="topbar">
+            <div class="left-tools"><div class="box"><select id="lang"><option value="ar">العربية</option><option value="en">English</option></select></div></div>
+            <div class="right-tools"><div class="box" id="mainThemeBtn"><span id="themeIcon">☀️</span></div></div>
+        </div>
+        <div class="center-content">
+            <h1 id="welcome" data-i18n="welcome"></h1>
+            <button id="start" data-i18n="start"></button>
+        </div>
+    </div>
+
+    <div id="mythsApp">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="mythsSettingsBtn">⚙️<div id="mythsSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="mythsTitle"></span></div>
+            <div class="right-tools"><div class="box back-to-home">←</div></div>
+        </div>
+        <div class="center-content">
+            <p data-i18n="mythsSubtitle"></p>
+            <div id="mythList"></div>
+        </div>
+    </div>
+
+    <div id="levelsApp">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="levelsSettingsBtn">⚙️<div id="levelsSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="levelsTitle"></span></div>
+            <div class="right-tools"><div class="box back-to-myths">←</div></div>
+        </div>
+        <div class="center-content">
+            <div class="myth-header-wrapper">
+                <p class="myth-header-text" data-i18n="mythHeaderText"></p>
+            </div>
+            <div id="levelList"></div>
+            <p class="myth-footer-text" data-i18n="mythFooterText"></p>
+        </div>
+    </div>
+
+    <div id="levelView">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="viewSettingsBtn">⚙️<div id="viewSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span id="levelLabelTop"></span></div>
+            <div class="right-tools"><div class="box close-level">←</div></div>
+        </div>
+        <div class="board-container" style="margin-top: 80px;">
+            <img src="https://a.top4top.io/p_3722gpchf1.jpg" class="board-img">
+            <div id="typewriterText" class="board-text-overlay"></div>
+        </div>
+        <div class="bottom-bar"><button id="actionBtn" data-i18n="startLevel"></button></div>
+    </div>
+
+    <div id="enrichmentLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="labSettingsBtn">⚙️<div id="labSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="lvl1"></span></div>
+            <div class="right-tools"><div class="box back-to-view">←</div></div>
+        </div>
+        <div class="lab-container">
+            <div class="bars-wrapper">
+                <div class="bar-group">
+                    <div class="bar-container"><div id="naturalBar" class="bar-fill" style="height: 0.7%;"></div></div>
+                    <label data-i18n="naturalLabel"></label>
+                    <span class="percent-val">0.7%</span>
+                </div>
+                <div class="bar-group">
+                    <div class="bar-container"><div id="enrichedBar" class="bar-fill" style="height: 0.7%;"></div></div>
+                    <label data-i18n="enrichedLabel"></label>
+                    <span id="currentEnrichedVal" class="percent-val">0.7%</span>
+                </div>
+            </div>
+            <div class="input-section">
+                <div class="horizontal-controls">
+                    <div class="selection-box">
+                        <select id="enrichmentSelect">
+                            <option value="" data-i18n="selectPrompt">--</option>
+                            <optgroup label="3-5%" id="group1"></optgroup>
+                            <option value="20">20%</option>
+                            <optgroup label="≥ 90%" id="group2"></optgroup>
+                        </select>
+                    </div>
+                    <div class="usage-box" id="usageDisplay" data-i18n="waitingUsage"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-bar"><button id="runBtn" data-i18n="runBtn"></button></div>
+    </div>
+
+    <div id="fissionLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="fissionSettingsBtn">⚙️<div id="fissionSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="lvl2"></span></div>
+            <div class="right-tools"><div class="box back-to-view">←</div></div>
+        </div>
+        <div id="fissionCanvas">
+            <div id="targetU235">U235</div>
+            <div id="fissionFlash"></div>
+        </div>
+        <div class="fission-footer">
+            <div id="neutronLauncher" class="cannon-base">
+                <div class="cannon-barrel" id="fissionBarrel">
+                    <div id="projectileN" class="cannon-ball">n</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chainReactionLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="chainSettingsBtn">⚙️<div id="chainSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="lvl3"></span></div>
+            <div class="right-tools"><div class="box back-to-view">←</div></div>
+        </div>
+        <div id="chainCanvas">
+            </div>
+        <div class="fission-footer">
+            <div id="chainLauncher" class="cannon-base">
+                <div class="cannon-barrel" id="chainBarrel">
+                    <div id="chainProjectile" class="cannon-ball">n</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="criticalMassLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="criticalSettingsBtn">⚙️<div id="criticalSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="lvl4"></span></div>
+            <div class="right-tools"><div class="box back-to-view">←</div></div>
+        </div>
+        <div class="critical-sections-container">
+            <div class="critical-section" id="sectionBelow">
+                <h3 data-i18n="belowTitle"></h3>
+                <div class="ball-area" id="areaBelow"></div>
+            </div>
+            <div class="critical-section" id="sectionAt">
+                <h3 data-i18n="atTitle"></h3>
+                <div class="ball-area" id="areaAt"></div>
+            </div>
+            <div class="critical-section" id="sectionAbove">
+                <h3 data-i18n="aboveTitle"></h3>
+                <div class="ball-area" id="areaAbove"></div>
+            </div>
+        </div>
+        <div class="fission-footer">
+            <div id="criticalLauncher" class="cannon-base">
+                <div class="cannon-barrel" id="criticalBarrel">
+                    <div id="criticalProjectile" class="cannon-ball">n</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="constructionLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="constSettingsBtn">⚙️<div id="constSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="center-title"><span data-i18n="lvl5"></span></div>
+            <div class="right-tools"><div class="box back-to-view">←</div></div>
+        </div>
+        <div class="construction-container">
+            <h2 id="constQuestion"></h2>
+            <div id="constructionResultArea">
+                <img id="constMainImg" src="" class="test-tube">
+            </div>
+            <div class="controls-area" id="constControls">
+                <select id="selectEnrichmentLevel" class="const-select"></select>
+                <select id="selectReactionType" class="const-select"></select>
+                <button id="formBtn" data-i18n="formBtn"></button>
+            </div>
+            <button id="constNextBtn" data-i18n="btnNext" style="display:none;"></button>
+        </div>
+    </div>
+
+    <div id="evaluationLab">
+        <div class="topbar">
+            <div class="left-tools"><div class="box" id="evalSettingsBtn">⚙️<div id="evalSettings" class="settings-menu"><button class="lang-toggle-btn" data-i18n="langBtn"></button><button class="theme-toggle-btn" data-i18n="themeBtn"></button></div></div></div>
+            <div class="right-tools"><div class="box back-to-home">←</div></div>
+        </div>
+        <div class="evaluation-container">
+            <div class="score-circle-wrapper">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" class="bg-circle"></circle>
+                    <circle cx="50" cy="50" r="45" id="scoreCircle" class="fg-circle"></circle>
+                </svg>
+                <div id="scoreValue">0%</div>
+            </div>
+            <p id="evalMessage" class="eval-msg"></p>
+            <p id="suggestionText" class="suggest-txt" style="display:none;"></p>
+            <button id="suggestionBtn" data-i18n="suggestBtn" style="display:none;"></button>
+            <button id="retryLevelBtn" data-i18n="btnRestart" style="display:none;"></button>
+        </div>
+    </div>
+
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <div class="modal-header"><span id="modalTitle"></span><span class="close-modal" onclick="closeModal('customAlert')">×</span></div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer" id="modalFooter"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('SW Registered'))
+                .catch(err => console.log('SW Registration Failed', err));
+            });
+        }
+    </script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(registration => {
+          console.log('تم الربط بنجاح! الصور ستُحفظ تلقائياً الآن.');
+        })
+        .catch(err => {
+          console.log('فشل الربط:', err);
+        });
+    });
+  }
+</script>
+
+</body>
+</html>
